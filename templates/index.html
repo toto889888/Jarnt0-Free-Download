@@ -1,204 +1,414 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th"> <!-- ບອກ Browser ວ່າໜ້າເວັບນີ້ເປັນພາສາໄທ, ແຕ່ເນື້ອຫາສ່ວນຫຼາຍເຮົາໃຊ້ພາສາລາວ -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jarnt0-Downloads</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8"> <!-- ກຳນົດໃຫ້ໃຊ້ລະບົບໂຕອັກສອນແບບ UTF-8 ເພື່ອສະແດງພາສາລາວໄດ້ຖືກຕ້ອງ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ຕັ້ງຄ່າໃຫ້ໜ້າເວັບສະແດງຜົນໄດ້ດີໃນທຸກຂະໜາດໜ້າຈໍ, ໂດຍສະເພາະມືຖື -->
+    <title>Jarnt0-Downloads</title> <!-- ຊື່ທີ່ຈະສະແດງຢູ່ເທິງແຖບ Browser ຫຼື Tab -->
+    
+    <!-- ສ່ວນນີ້ແມ່ນການນຳເຂົ້າ Font ພາສາລາວ ງາມໆ ມາໃຊ້ໃນໜ້າເວັບ -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao+Looped:wdth,wght@94.9,100..900&family=Noto+Sans+Lao:wght@100..900&family=Phetsarath:wght@400;700&display=swap');
-
-        /* Font styling for placeholders, selects, and buttons */
+    </style>
+    
+    <!-- ໄອຄອນນ້ອຍໆ ທີ່ຈະສະແດງຢູ່ເທິງແຖບ Browser ຂອງໜ້າເວັບ (ເປັນຮູບ SVG ສີຂຽວ) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='green' d='M5 20q-.825 0-1.413-.588T3 18v-2q0-.425.288-.713T4 15q.425 0 .713.288T5 16v2h14v-2q0-.425.288-.713T20 15q.425 0 .713.288T21 16v2q0 .825-.588 1.413T19 20zm7-4q-.2 0-.375-.063t-.325-.212l-4-4q-.275-.275-.275-.7t.275-.7q.3-.3.713-.3t.712.3l2.3 2.3V4q0-.425.288-.713T12 3q.425 0 .713.288T13 4v8.625l2.3-2.3q.3-.3.713-.3t.712.3q.3.3.3.713t-.3.712l-4 4q-.15.15-.325.213T12 16z'/></svg>">
+    
+    <!-- ສ່ວນນີ້ແມ່ນ CSS (Code ສຳລັບຕົກແຕ່ງໜ້າເວັບ) -->
+    <style>
+        /* ກຳນົດ Font ພາສາລາວ ໃຫ້ກັບບ່ອນພິມ (placeholder), ປຸ່ມເລືອກ (select), ແລະ ປຸ່ມກົດ (button) */
         input::placeholder,
         select,
-        button,
-        body {
+        button {
             font-family: "Noto Sans Lao Looped", sans-serif;
         }
 
-        /* Basic reset and body styling */
+        /* ຕັ້ງຄ່າພື້ນຖານໃຫ້ກັບທຸກຢ່າງໃນໜ້າເວັບ ເພື່ອໃຫ້ການຈັດວາງງ່າຍຂຶ້ນ */
         * {
             box-sizing: border-box;
         }
 
+        /* ຕົກແຕ່ງພື້ນຫຼັງຂອງໜ້າເວັບ, ຕັ້ງ Font, ແລະ ຈັດໃຫ້ເນື້ອຫາຢູ່ກາງໜ້າຈໍ */
         body {
-            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            font-family: "Noto Sans Lao Looped", sans-serif;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); /* ສີພື້ນຫຼັງແບບໄລ່ລະດັບ */
             margin: 0;
             padding: 0;
-            min-height: 100vh;
+            min-height: 100vh; /* ໃຫ້ໜ້າເວັບເຕັມຄວາມສູງຂອງໜ້າຈໍ */
+            display: flex; /* ໃຊ້ Flexbox ເພື່ອຈັດວາງ */
+            flex-direction: column; /* ຈັດວາງແບບເປັນແຖວລົງລຸ່ມ */
+            align-items: center; /* ຈັດໃຫ້ຢູ່ກາງໃນແນວນອນ */
+            justify-content: center; /* ຈັດໃຫ້ຢູ່ກາງໃນແນວຕັ້ງ */
+        }
+
+        /* ຕົກແຕ່ງກ່ອງຫຼັກທີ່ບັນຈຸຟອມດາວໂຫລດ */
+        .container {
+            background: #fff; /* ສີພື້ນຫຼັງສີຂາວ */
+            margin: 40px 0 16px 0; /* ໄລຍະຫ່າງຂ້າງນອກ */
+            padding: 32px 24px 24px 24px; /* ໄລຍະຫ່າງຂ້າງໃນ */
+            border-radius: 18px; /* ຂອບມົນ */
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); /* ເງົາ */
+            max-width: 400px; /* ຂະໜາດສູງສຸດ */
+            width: 100%; /* ໃຫ້ເຕັມຄວາມກວ້າງຂອງພື້ນທີ່ທີ່ມີ */
+        }
+
+        /* ຕົກແຕ່ງສ່ວນຫົວ (Header) ຂອງແອັບ */
+        header {
+            display: flex; /* ໃຊ້ Flexbox */
+            align-items: center; /* ຈັດໃຫ້ຢູ່ກາງໃນແນວນອນ */
+            gap: 12px; /* ໄລຍະຫ່າງລະຫວ່າງໄອຄອນກັບຫົວຂໍ້ */
+            margin-bottom: 24px; /* ໄລຍະຫ່າງດ້ານລຸ່ມ */
+        }
+
+        /* ຕົກແຕ່ງຂະໜາດໄອຄອນໃນ Header */
+        header svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        /* ຕົກແຕ່ງຫົວຂໍ້ "ຈານໂຕ່ດາວໂຫລດວິດີໂອຟຣີ" */
+        h1 {
+            font-size: 1.5rem; /* ຂະໜາດ Font */
+            margin: 0;
+            color: #1a5d1a; /* ສີຂຽວເຂັ້ມ */
+        }
+
+        /* ຕົກແຕ່ງປ້າຍກຳກັບ (Label) ຂອງຊ່ອງປ້ອນຂໍ້ມູນ */
+        label {
+            font-weight: 600; /* ໂຕໜາ */
+            margin-bottom: 6px; /* ໄລຍະຫ່າງດ້ານລຸ່ມ */
+            display: block; /* ໃຫ້ຢູ່ແຖວໃໝ່ */
+        }
+
+        /* ຕົກແຕ່ງຊ່ອງປ້ອນລິ້ງວິດີໂອ */
+        input[type="url"] {
+            width: 100%; /* ເຕັມຄວາມກວ້າງ */
+            padding: 10px 12px; /* ໄລຍະຫ່າງຂ້າງໃນ */
+            border: 1.5px solid #b2bec3; /* ຂອບ */
+            border-radius: 8px; /* ຂອບມົນ */
+            font-size: 1rem; /* ຂະໜາດ Font */
+            margin-bottom: 18px; /* ໄລຍະຫ່າງດ້ານລຸ່ມ */
+            transition: border 0.2s; /* ໃຫ້ມີ Animation ເວລາປ່ຽນຂອບ */
+        }
+
+        /* ຕົກແຕ່ງຊ່ອງປ້ອນລິ້ງວິດີໂອ ເວລາຖືກຄລິກ (Focus) */
+        input[type="url"]:focus {
+            border: 1.5px solid #1a5d1a; /* ຂອບສີຂຽວເຂັ້ມ */
+            outline: none; /* ລົບຂອບສີຟ້າທີ່ຕິດມາກັບ Browser */
+        }
+
+        /* ຕົກແຕ່ງປຸ່ມເລືອກຄຸນນະພາບ (Select) */
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid #b2bec3;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 18px;
+            background: #f8fafb; /* ສີພື້ນຫຼັງ */
+        }
+
+        /* ຕົກແຕ່ງປຸ່ມ "ດາວໂຫລດ" */
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #1a5d1a 60%, #4caf50 100%); /* ສີໄລ່ລະດັບສີຂຽວ */
+            color: #fff; /* ໂຕໜັງສືສີຂາວ */
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none; /* ບໍ່ມີຂອບ */
+            border-radius: 8px;
+            cursor: pointer; /* ໃຫ້ເມົ້າເປັນຮູບມື ເວລາຊີ້ */
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center; /* Center content vertically */
+            justify-content: center;
+            gap: 8px; /* ໄລຍະຫ່າງລະຫວ່າງໄອຄອນກັບໂຕໜັງສື */
+            transition: background 0.2s; /* ໃຫ້ມີ Animation ເວລາປ່ຽນສີພື້ນຫຼັງ */
+        }
+
+        /* ຕົກແຕ່ງປຸ່ມ "ດາວໂຫລດ" ເວລາຖືກກົດ (Active) */
+        button:active {
+            background: #388e3c; /* ສີຂຽວເຂັ້ມຂຶ້ນ */
+        }
+
+        /* ຕົກແຕ່ງກ່ອງສະແດງຂໍ້ຄວາມ (Message Area) */
+        .message {
+            margin: 18px 0 0 0;
+            min-height: 32px; /* ຄວາມສູງຕໍ່າສຸດ */
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: none; /* ເຊື່ອງໄວ້ໃນຕອນຕົ້ນ */
+        }
+
+        /* ຕົກແຕ່ງຂໍ້ຄວາມແບບ "ຂໍ້ມູນ" (Info) */
+        .message.info {
+            background: #e3f2fd; /* ສີຟ້າອ່ອນ */
+            color: #1565c0; /* ໂຕໜັງສືສີຟ້າເຂັ້ມ */
+            display: block; /* ສະແດງຂຶ້ນມາ */
+        }
+
+        /* ຕົກແຕ່ງຂໍ້ຄວາມແບບ "ສຳເລັດ" (Success) */
+        .message.success {
+            background: #e8f5e9; /* ສີຂຽວອ່ອນ */
+            color: #2e7d32; /* ໂຕໜັງສືສີຂຽວເຂັ້ມ */
+            display: block;
+        }
+
+        /* ຕົກແຕ່ງຂໍ້ຄວາມແບບ "ຜິດພາດ" (Error) */
+        .message.error {
+            background: #ffebee; /* ສີແດງອ່ອນ */
+            color: #c62828; /* ໂຕໜັງສືສີແດງເຂັ້ມ */
+            display: block;
+        }
+
+        /* ຕົກແຕ່ງລິ້ງດາວໂຫລດທີ່ສະແດງໃນກ່ອງຂໍ້ຄວາມ */
+        .download-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #1a5d1a;
+            font-weight: bold;
+            text-decoration: underline; /* ຂີດກ້ອງ */
+        }
+
+        /* ຕົກແຕ່ງສ່ວນ "ໝາຍເຫດ" (Disclaimer) */
+        .disclaimer {
+            font-size: 0.85rem;
+            color: #888; /* ສີເທົາ */
+            margin-top: 32px;
+            text-align: center; /* ຈັດຂໍ້ຄວາມຢູ່ກາງ */
+            padding: 0 20px; /* ໄລຍະຫ່າງດ້ານຂ້າງສຳລັບໜ້າຈໍນ້ອຍ */
+        }
+
+        /* ຕົກແຕ່ງສ່ວນລຸ່ມສຸດ (Bottom Section) ທີ່ມີປຸ່ມ "ອື່ນໆ" ແລະ ຂໍ້ມູນຕິດຕໍ່ Admin */
+        .bottom-section {
+            display: flex;
+            justify-content: space-between; /* ຈັດໃຫ້ຢູ່ຄົນລະຝັ່ງ */
+            align-items: center;
+            width: 100%;
+            max-width: 400px; /* ຂະໜາດສູງສຸດເທົ່າກັບ Container */
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+
+        /* ຕົກແຕ່ງປຸ່ມ "ອື່ນໆ" */
+        .bottom-section .more-button {
+            padding: 10px 15px;
+            background: green; /* ສີຂຽວ */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.2s;
+            width: auto; /* ໃຫ້ຂະໜາດປຸ່ມຕາມເນື້ອຫາ */
+        }
+        /* ຕົກແຕ່ງປຸ່ມ "ອື່ນໆ" ເວລາເມົ້າຊີ້ (Hover) */
+        .bottom-section .more-button:hover {
+            padding: 10px 15px;
+            background: #656565; /* ສີເທົາ */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.2s;
+            width: auto;
+        }
+
+        /* ຕົກແຕ່ງປຸ່ມ "ອື່ນໆ" ເວລາຖືກກົດ (Active) */
+        .bottom-section .more-button:active {
+            background: #455a64;
+        }
+
+        /* ຕົກແຕ່ງສ່ວນຕິດຕໍ່ Admin */
+        .bottom-section .contact-admin {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #333;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* ຕົກແຕ່ງຮູບໂລໂກ້ Admin */
+        .bottom-section .contact-admin img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%; /* ຮູບວົງມົນ */
+            object-fit: cover; /* ໃຫ້ຮູບເຕັມພື້ນທີ່ */
+        }
+
+        /* ປັບແຕ່ງສຳລັບໜ້າຈໍຂະໜາດນ້ອຍ (ເຊັ່ນ: ມືຖື) */
+        @media (max-width: 600px) {
+            .container {
+                padding: 18px 6vw 18px 6vw; /* ປັບໄລຍະຫ່າງຂ້າງໃນໃຫ້ເໝາະສົມ */
+            }
+
+            h1 {
+                font-size: 1.1rem; /* ປັບຂະໜາດຫົວຂໍ້ໃຫ້ເໝາະສົມ */
+            }
+            .bottom-section {
+                padding: 0 6vw; /* ປັບໄລຍະຫ່າງດ້ານຂ້າງໃຫ້ເໝາະສົມ */
+            }
         }
     </style>
-    <!-- Icon for the page (SVG in green) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='green' d='M5 20q-.825 0-1.413-.588T3 18v-2q0-.425.288-.713T4 15q.425 0 .713.288T5 16v2h14v-2q0-.425.288-.713T20 15q.425 0 .713.288T21 16v2q0 .825-.588 1.413T19 20zm7-4q-.2 0-.375-.063t-.325-.212l-4-4q-.275-.275-.275-.7t.275-.7q.3-.3.713-.3t.712.3l2.3 2.3V4q0-.425.288-.713T12 3q.425 0 .713.288T13 4v8.625l2.3-2.3q.3-.3.713-.3t.712.3q.3.3.3.713t-.3.712l-4 4q-.15.15-.325.213T12 16z'/></svg>">
 </head>
-<body class="bg-gradient-to-br from-blue-100 to-blue-200 min-h-screen flex flex-col items-center justify-center p-4">
-    <div class="container bg-white p-6 md:p-8 rounded-2xl shadow-xl max-w-sm w-full mt-10 mb-4">
-        <header class="flex items-center gap-3 mb-6">
-            <!-- SVG icon for the header -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-9 h-9">
+<body>
+    <!-- ກ່ອງຫຼັກຂອງແອັບ, ຈັດໃຫ້ຢູ່ກາງໜ້າຈໍ -->
+    <div class="container">
+        <header>
+            <!-- ໄອຄອນດາວໂຫລດສຳລັບຫົວຂໍ້ -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path fill="#1a5d1a"
                     d="M5 20q-.825 0-1.413-.588T3 18v-2q0-.425.288-.713T4 15q.425 0 .713.288T5 16v2h14v-2q0-.425.288-.713T20 15q.425 0 .713.288T21 16v2q0 .825-.588 1.413T19 20zm7-4q-.2 0-.375-.063t-.325-.212l-4-4q-.275-.275-.275-.7t.275-.7q.3-.3.713-.3t.712.3l2.3 2.3V4q0-.425.288-.713T12 3q.425 0 .713.288T13 4v8.625l2.3-2.3q.3-.3.713-.3t.712.3q.3.3.3.713t-.3.712l-4 4q-.15.15-.325.213T12 16z" />
             </svg>
-            <h1 class="text-2xl font-bold text-green-700">ຈານໂຕ່ດາວໂຫລດວິດີໂອຟຣີ</h1>
+            <h1>ຈານໂຕ່ດາວໂຫລດວິດີໂອຟຣີ</h1> <!-- ຊື່ແອັບ -->
         </header>
-        <label for="video-url" class="font-semibold mb-1 block">ລິ້ງວິດີໂອ:</label>
-        <input type="url" id="video-url" placeholder="ວາງລິ້ງວິດີໂອ YouTube, Facebook, TikTok ..." required
-            class="w-full p-3 border-2 border-gray-300 rounded-lg text-base mb-4 focus:border-green-700 outline-none transition-colors duration-200">
-        <label for="quality" class="font-semibold mb-1 block">ເລືອກຄຸນນະພາບ (Pixel):</label>
-        <select id="quality"
-            class="w-full p-3 border-2 border-gray-300 rounded-lg text-base mb-4 bg-gray-50 focus:border-green-700 outline-none">
+        <label for="video-url">ລິ້ງວິດີໂອ:</label> <!-- ປ້າຍບອກຊ່ອງໃສ່ລິ້ງ -->
+        <input type="url" id="video-url" placeholder="ວາງລິ້ງວິດີໂອ YouTube, Facebook, TikTok ..." required> <!-- ຊ່ອງປ້ອນລິ້ງ -->
+        <label for="quality">ເລືອກຄຸນນະພາບ (Pixel):</label> <!-- ປ້າຍບອກຊ່ອງເລືອກຄຸນນະພາບ -->
+        <select id="quality"> <!-- ປຸ່ມເລືອກຄຸນນະພາບ -->
             <option value="best">ຄຸນນະພາບດີທີ່ສຸດ (ແນະນຳ)</option>
             <option value="high">1080p (Full HD)</option>
             <option value="medium">720p (HD)</option>
             <option value="low">480p (SD)</option>
             <option value="360">360p (SD)</option>
         </select>
-        <button id="download-btn"
-            class="w-full p-3 bg-gradient-to-r from-green-700 to-green-500 text-white text-lg font-bold rounded-lg cursor-pointer flex items-center justify-center gap-2 transition-all duration-200 hover:from-green-800 hover:to-green-600 active:from-green-900 active:to-green-700 shadow-md">
-            <!-- Download icon inside the button -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <button id="download-btn"> <!-- ປຸ່ມດາວໂຫລດ -->
+            <!-- ໄອຄອນດາວໂຫລດໃນປຸ່ມ -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
                 <path fill="#fff"
                     d="M5 20q-.825 0-1.413-.588T3 18v-2q0-.425.288-.713T4 15q.425 0 .713.288T5 16v2h14v-2q0-.425.288-.713T20 15q.425 0 .713.288T21 16v2q0 .825-.588 1.413T19 20zm7-4q-.2 0-.375-.063t-.325-.212l-4-4q-.275-.275-.275-.7t.275-.7q.3-.3.713-.3t.712.3l2.3 2.3V4q0-.425.288-.713T12 3q.425 0 .713.288T13 4v8.625l2.3-2.3q.3-.3.713-.3t.712.3q.3.3.3.713t-.3.712l-4 4q-.15.15-.325.213T12 16z" />
             </svg>
             ດາວໂຫລດ
         </button>
-        <div id="message" class="message mt-4 min-h-8 text-base p-2 rounded-md hidden"></div>
+        <div id="message" class="message"></div> <!-- ບ່ອນສະແດງຂໍ້ຄວາມແຈ້ງເຕືອນ -->
+    </div>
+    
+    <!-- ສ່ວນສະແດງຄຳເຕືອນ ຫຼື ຂໍ້ສັງເກດ -->
+    <div class="disclaimer">
+        <h1 style="font-size: large;color: black;"> ເປີດໃຫ້ທົດລອງໃຊ້ຟຣີກັບແພັດຟອມຕ່າງໆ</h1> <br>
+       <strong> ໝາຍເຫດ:</strong>ຍັງເປ້ນຕົວທົດລອງເທົ່ານັ້ນຖ້າຫາກມີປັນຫາສາມາດຕິດຕໍ່ແອັດມິນໄດ້...
     </div>
 
-    <div class="disclaimer text-sm text-gray-600 mt-8 text-center px-5">
-        ເປີດໃຫ້ທົດລອງໃຊ້ຟຣີສຳລັບໃຜທີ່ມັກໂຫລດວິດີໂອຈາກແພັດຟອມຕ່າງໆ
-    </div>
-
-    <!-- New section for the button and contact info -->
-    <div class="flex justify-between items-center w-full max-w-sm mt-5 px-4 md:px-0">
-        <!-- Left Button -->
-        <button class="px-4 py-2 bg-gray-700 text-white rounded-md shadow-md hover:bg-gray-800 transition-colors duration-200">
-            ปุ่มซ้าย
+    <!-- ສ່ວນໃໝ່ສຳລັບປຸ່ມ "ອື່ນໆ" ແລະ ຂໍ້ມູນຕິດຕໍ່ Admin -->
+   <div class="bottom-section">
+    <a href="https://my-project-toto-dephoy.onrender.com"> <!-- ລິ້ງໄປໜ້າອື່ນ -->
+        <!-- ປຸ່ມຊ້າຍ: ອື່ນໆ -->
+        <button class="more-button">
+            ອື່ນໆ...
         </button>
+    </a> 
         
-        <!-- Right Contact Info -->
-        <div class="flex items-center gap-2">
-            <!-- Placeholder for Admin Logo -->
-            <img src="https://placehold.co/30x30/4CAF50/FFFFFF?text=Admin" alt="Admin Logo" class="w-8 h-8 rounded-full shadow-sm">
-            <span class="text-gray-700 text-base font-medium">
+        <!-- ຂໍ້ມູນຕິດຕໍ່ Admin ຢູ່ເບື້ອງຂວາ -->
+        <div class="contact-admin">
+          <a href="https://wa.me/8562098837409"> <!-- ລິ້ງໄປຫາ WhatsApp Admin -->
+            <img src="https://img2.pic.in.th/pic/wa.md.gif" alt="Admin Logo"> <!-- ຮູບໂລໂກ້ Admin -->
+        </a> 
+           <a href="https://wa.me//8562098837409" style="text-decoration: none;color: black;"> <!-- ລິ້ງໄປຫາ WhatsApp Admin -->
+            <span>
                 ຕິດຕໍ່ Admin
             </span>
+        </a>
         </div>
     </div>
 
+    <!-- ສ່ວນຂອງ JavaScript (Code ສຳລັບການເຮັດວຽກຂອງໜ້າເວັບ) -->
     <script>
-        // Function to display messages in the Message Area
+        // ຟັງຊັນສຳລັບສະແດງຂໍ້ຄວາມໃນພື້ນທີ່ແຈ້ງເຕືອນ (Message Area)
         function showMessage(msg, type = 'info', downloadUrl = null) {
-            const messageDiv = document.getElementById('message');
-            messageDiv.className = 'message ' + type;
-            messageDiv.innerHTML = msg;
-            // Remove hidden class to make it visible
-            messageDiv.classList.remove('hidden'); 
-
-            // Add specific Tailwind classes based on type
-            if (type === 'info') {
-                messageDiv.classList.add('bg-blue-100', 'text-blue-700');
-            } else if (type === 'success') {
-                messageDiv.classList.add('bg-green-100', 'text-green-700');
-            } else if (type === 'error') {
-                messageDiv.classList.add('bg-red-100', 'text-red-700');
-            }
-
-            // If a download link is provided, display it
+            const messageDiv = document.getElementById('message'); // ຫາ Element ຂອງກ່ອງຂໍ້ຄວາມ
+            messageDiv.className = 'message ' + type; // ຕັ້ງ Class ຕາມປະເພດຂໍ້ຄວາມ (info, success, error)
+            messageDiv.innerHTML = msg; // ໃສ່ຂໍ້ຄວາມເຂົ້າໄປ
+            // ຖ້າມີລິ້ງດາວໂຫລດ, ໃຫ້ສະແດງລິ້ງນັ້ນນຳ
             if (downloadUrl) {
-                messageDiv.innerHTML += `<br><a class="download-link text-green-700 font-bold underline mt-2 inline-block" href="${downloadUrl}" download>ຄິກບ່ອນນີ້ເພື່ອດາວໂຫລດໄຟຣ໌</a>`;
+                messageDiv.innerHTML += `<br><a class="download-link" href="${downloadUrl}" download>ຄິກບ່ອນນີ້ເພື່ອດາວໂຫລດໄຟຣ໌</a>`;
             }
         }
 
-        // Handle download button click
+        // ຈັດການເຫດການເມື່ອກົດປຸ່ມດາວໂຫລດ
         document.getElementById('download-btn').addEventListener('click', async function () {
-            const url = document.getElementById('video-url').value.trim();
-            const quality = document.getElementById('quality').value;
+            const url = document.getElementById('video-url').value.trim(); // ເອົາລິ້ງວິດີໂອທີ່ປ້ອນເຂົ້າ
+            const quality = document.getElementById('quality').value; // ເອົາຄຸນນະພາບທີ່ເລືອກ
 
-            // Check if the URL input is empty
+            // ກວດສອບວ່າຊ່ອງໃສ່ລິ້ງວິດີໂອວ່າງບໍ່
             if (!url) {
-                showMessage('ກະລຸນາໃສ່ວິດີໂອ!', 'error');
+                showMessage('ກະລຸນາໃສ່ວິດີໂອ!', 'error'); // ສະແດງຂໍ້ຄວາມຜິດພາດ
                 return;
             }
 
-            showMessage('ກຳລັງຕຽມການດາວໂຫລດ...', 'info');
+            showMessage('ກຳລັງຕຽມການດາວໂຫລດ...', 'info'); // ສະແດງຂໍ້ຄວາມກຳລັງດາວໂຫລດ
             try {
-                // Send request to the Backend (This part is commented out as the backend is not provided)
-                // const response = await fetch('/download', {
-                //     method: 'POST',
-                //     headers: { 'Content-Type': 'application/json' },
-                //     body: JSON.stringify({ url, quality })
-                // });
-                // const data = await response.json();
-
-                // Mocking a successful response for demonstration
-                const data = { success: true, filename: 'sample_video.mp4' }; 
+                // ສົ່ງຄຳຮ້ອງຂໍໄປຫາ Backend (Server ຂອງເຮົາ) ເພື່ອໃຫ້ມັນໄປດາວໂຫລດວິດີໂອ
+                const response = await fetch('/download', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url, quality })
+                });
+                const data = await response.json(); // ຮັບຂໍ້ມູນທີ່ Backend ສົ່ງກັບມາ
 
                 if (data.success) {
-                    // Display download link
-                    // The 'filename' from the backend is now used to construct the download URL
+                    // ຖ້າດາວໂຫລດສຳເລັດ, ສະແດງລິ້ງດາວໂຫລດໄຟລ໌
                     showMessage('ການດາວໂຫລດສຳເລັດ! ກຳລັງຕຽມໄຟຣ໌...', 'success', `/download-file/${encodeURIComponent(data.filename)}`);
                 } else {
-                    // Display error message
+                    // ຖ້າເກີດຂໍ້ຜິດພາດ, ສະແດງຂໍ້ຄວາມຜິດພາດ
                     showMessage(data.message || 'ເກີດຂໍ້ຜິດພາດໃນຂະນະດາວໂຫລດ', 'error');
                 }
             } catch (err) {
-                // Handle network errors
-                console.error('Network or server error:', err); // Log error for debugging
+                // ຈັດການຂໍ້ຜິດພາດຂອງເຄືອຂ່າຍ ຫຼື Server
+                console.error('Network or server error:', err); // ສະແດງຂໍ້ຜິດພາດໃນ Console ເພື່ອການແກ້ໄຂ
                 showMessage('ບໍ່ສາມາດເຊື່ອມຕໍ່ກັບ Server ໄດ້ ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ Backend', 'error');
             }
         });
 
-        // --- Section added for clipboard link suggestion function ---
-        // Function to check if it's a supported URL (similar to app.py but in JavaScript)
+        // --- ສ່ວນຂອງຟັງຊັນແນະນຳລິ້ງຈາກ Clipboard ---
+        // ຟັງຊັນກວດສອບວ່າລິ້ງທີ່ວາງມາແມ່ນລິ້ງທີ່ຮອງຮັບບໍ່ (ຄ້າຍກັບທີ່ໃຊ້ໃນ Backend ແຕ່ເປັນ JavaScript)
         function isValidDownloadUrl(url) {
-            // Updated Regex to support common platforms including web.facebook.com, vm.tiktok.com, and vt.tiktok.com
+            // Regex ທີ່ຖືກປັບປຸງເພື່ອຮອງຮັບແພັດຟອມຕ່າງໆ ເຊັ່ນ YouTube, Facebook, TikTok, ແລະອື່ນໆ
             const pattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be|facebook\.com|web\.facebook\.com|fb\.watch|instagram\.com|tiktok\.com|vm\.tiktok\.com|vt\.tiktok\.com|dailymotion\.com|vimeo\.com|twitch\.tv|twitter\.com)\/.*/i;
             return pattern.test(url);
         }
 
-        // Function to read from clipboard and populate the input field
+        // ຟັງຊັນອ່ານຂໍ້ມູນຈາກ Clipboard ແລະວາງໃສ່ຊ່ອງປ້ອນຂໍ້ມູນ
         async function pasteFromClipboardIfValid() {
-            const urlInput = document.getElementById('video-url');
+            const urlInput = document.getElementById('video-url'); // ຫາ Element ຂອງຊ່ອງປ້ອນລິ້ງ
             if (!urlInput) {
                 console.error('URL input element not found.');
                 return;
             }
 
-            // Check if the input field is empty before attempting to paste from clipboard
+            // ກວດສອບວ່າຊ່ອງປ້ອນຂໍ້ມູນວ່າງບໍ່ ກ່ອນທີ່ຈະພະຍາຍາມວາງຈາກ Clipboard
             if (urlInput.value.trim() !== '') {
                 console.log('URL input is not empty, skipping clipboard paste.');
-                return; // If there's already a link, do not auto-paste
+                return; // ຖ້າມີລິ້ງຢູ່ແລ້ວ, ຈະບໍ່ວາງອັດຕະໂນມັດ
             }
 
             try {
-                // Read text from clipboard
+                // ອ່ານຂໍ້ຄວາມຈາກ Clipboard
                 const text = await navigator.clipboard.readText();
-                // console.log('Text from clipboard:', text); // For debugging
+                // console.log('Text from clipboard:', text); // ສຳລັບການກວດສອບ
 
-                // Check if it's a valid and supported URL
+                // ກວດສອບວ່າເປັນລິ້ງທີ່ຖືກຕ້ອງ ແລະ ຮອງຮັບບໍ່
                 if (isValidDownloadUrl(text)) {
-                    // If it's a valid URL, populate the input field
+                    // ຖ້າເປັນລິ້ງທີ່ຖືກຕ້ອງ, ໃຫ້ວາງໃສ່ຊ່ອງປ້ອນຂໍ້ມູນ
                     urlInput.value = text;
-                    // console.log('URL pasted from clipboard:', text); // For debugging
-                    showMessage('ກວດພົບລິ້ງແລ້ວ! ກົດ "ດາວໂຫລດ" ໄດ້ເລີຍ!', 'info'); // Display suggestion message
+                    // console.log('URL pasted from clipboard:', text); // ສຳລັບການກວດສອບ
+                    showMessage('ກວດພົບລິ້ງແລ້ວ! ກົດ "ດາວໂຫລດ" ໄດ້ເລີຍ!', 'info'); // ສະແດງຂໍ້ຄວາມແນະນຳ
                 }
             } catch (err) {
-                // Handle clipboard access errors (e.g., user denied permission, or browser restrictions in HTTP)
-                // console.error('Failed to read clipboard contents (expected for security/HTTP): ', err); // For debugging
-                // No need to show an alert if it just can't read automatically, as the user can still paste manually
+                // ຈັດການຂໍ້ຜິດພາດໃນການເຂົ້າເຖິງ Clipboard (ເຊັ່ນ: ຜູ້ໃຊ້ບໍ່ອະນຸຍາດ, ຫຼື ຂໍ້ຈຳກັດຂອງ Browser)
+                // console.error('Failed to read clipboard contents (expected for security/HTTP): ', err); // ສຳລັບການກວດສອບ
+                // ບໍ່ຈຳເປັນຕ້ອງສະແດງ Alert ຖ້າບໍ່ສາມາດອ່ານໄດ້ອັດຕະໂນມັດ, ເພາະຜູ້ໃຊ້ຍັງສາມາດວາງດ້ວຍຕົນເອງໄດ້
             }
         }
 
-        // Call the function when the page is fully loaded
+        // ເອີ້ນໃຊ້ຟັງຊັນເມື່ອໜ້າເວັບໂຫລດສຳເລັດແລ້ວ
         document.addEventListener('DOMContentLoaded', () => {
-            pasteFromClipboardIfValid(); // Attempt to paste link from clipboard immediately on page load
+            pasteFromClipboardIfValid(); // ພະຍາຍາມວາງລິ້ງຈາກ Clipboard ທັນທີເມື່ອໜ້າເວັບໂຫລດ
         });
-        // --- End of clipboard link suggestion function section ---
+        // --- ສິ້ນສຸດສ່ວນຂອງຟັງຊັນແນະນຳລິ້ງຈາກ Clipboard ---
     </script>
 </body>
 </html>
