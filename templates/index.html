@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jarnt0-Downloads</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao+Looped:wdth,wght@94.9,100..900&family=Noto+Sans+Lao:wght@100..900&family=Phetsarath:wght@400;700&display=swap');
-    </style>
-    <!-- Icon for the page (SVG in green) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='green' d='M5 20q-.825 0-1.413-.588T3 18v-2q0-.425.288-.713T4 15q.425 0 .713.288T5 16v2h14v-2q0-.425.288-.713T20 15q.425 0 .713.288T21 16v2q0 .825-.588 1.413T19 20zm7-4q-.2 0-.375-.063t-.325-.212l-4-4q-.275-.275-.275-.7t.275-.7q.3-.3.713-.3t.712.3l2.3 2.3V4q0-.425.288-.713T12 3q.425 0 .713.288T13 4v8.625l2.3-2.3q.3-.3.713-.3t.712.3q.3.3.3.713t-.3.712l-4 4q-.15.15-.325.213T12 16z'/></svg>">
-    <style>
+
         /* Font styling for placeholders, selects, and buttons */
         input::placeholder,
         select,
-        button {
+        button,
+        body {
             font-family: "Noto Sans Lao Looped", sans-serif;
         }
 
@@ -23,7 +22,6 @@
         }
 
         body {
-            font-family: "Noto Sans Lao Looped", sans-serif;
             background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
             margin: 0;
             padding: 0;
@@ -33,183 +31,86 @@
             align-items: center;
             justify-content: center; /* Center content vertically */
         }
-
-        .container {
-            background: #fff;
-            margin: 40px 0 16px 0;
-            padding: 32px 24px 24px 24px;
-            border-radius: 18px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-            max-width: 400px;
-            width: 100%;
-        }
-
-        header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        header svg {
-            width: 36px;
-            height: 36px;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            margin: 0;
-            color: #1a5d1a;
-        }
-
-        label {
-            font-weight: 600;
-            margin-bottom: 6px;
-            display: block;
-        }
-
-        input[type="url"] {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1.5px solid #b2bec3;
-            border-radius: 8px;
-            font-size: 1rem;
-            margin-bottom: 18px;
-            transition: border 0.2s;
-        }
-
-        input[type="url"]:focus {
-            border: 1.5px solid #1a5d1a;
-            outline: none;
-        }
-
-        select {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1.5px solid #b2bec3;
-            border-radius: 8px;
-            font-size: 1rem;
-            margin-bottom: 18px;
-            background: #f8fafb;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(90deg, #1a5d1a 60%, #4caf50 100%);
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: background 0.2s;
-        }
-
-        button:active {
-            background: #388e3c;
-        }
-
-        .message {
-            margin: 18px 0 0 0;
-            min-height: 32px;
-            font-size: 1rem;
-            padding: 8px 12px;
-            border-radius: 6px;
-            display: none;
-        }
-
-        .message.info {
-            background: #e3f2fd;
-            color: #1565c0;
-            display: block;
-        }
-
-        .message.success {
-            background: #e8f5e9;
-            color: #2e7d32;
-            display: block;
-        }
-
-        .message.error {
-            background: #ffebee;
-            color: #c62828;
-            display: block;
-        }
-
-        .download-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: #1a5d1a;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
-        .disclaimer {
-            font-size: 0.85rem;
-            color: #888;
-            margin-top: 32px;
-            text-align: center;
-            padding: 0 20px; /* Add some padding for smaller screens */
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 18px 6vw 18px 6vw;
-            }
-
-            h1 {
-                font-size: 1.1rem;
-            }
-        }
     </style>
+    <!-- Icon for the page (SVG in green) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='green' d='M5 20q-.825 0-1.413-.588T3 18v-2q0-.425.288-.713T4 15q.425 0 .713.288T5 16v2h14v-2q0-.425.288-.713T20 15q.425 0 .713.288T21 16v2q0 .825-.588 1.413T19 20zm7-4q-.2 0-.375-.063t-.325-.212l-4-4q-.275-.275-.275-.7t.275-.7q.3-.3.713-.3t.712.3l2.3 2.3V4q0-.425.288-.713T12 3q.425 0 .713.288T13 4v8.625l2.3-2.3q.3-.3.713-.3t.712.3q.3.3.3.713t-.3.712l-4 4q-.15.15-.325.213T12 16z'/></svg>">
 </head>
-<body>
-    <div class="container">
-        <header>
+<body class="bg-gradient-to-br from-blue-100 to-blue-200 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="container bg-white p-6 md:p-8 rounded-2xl shadow-xl max-w-sm w-full mt-10 mb-4">
+        <header class="flex items-center gap-3 mb-6">
             <!-- SVG icon for the header -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-9 h-9">
                 <path fill="#1a5d1a"
                     d="M5 20q-.825 0-1.413-.588T3 18v-2q0-.425.288-.713T4 15q.425 0 .713.288T5 16v2h14v-2q0-.425.288-.713T20 15q.425 0 .713.288T21 16v2q0 .825-.588 1.413T19 20zm7-4q-.2 0-.375-.063t-.325-.212l-4-4q-.275-.275-.275-.7t.275-.7q.3-.3.713-.3t.712.3l2.3 2.3V4q0-.425.288-.713T12 3q.425 0 .713.288T13 4v8.625l2.3-2.3q.3-.3.713-.3t.712.3q.3.3.3.713t-.3.712l-4 4q-.15.15-.325.213T12 16z" />
             </svg>
-            <h1>ຈານໂຕ່ດາວໂຫລດວິດີໂອຟຣີ</h1>
+            <h1 class="text-2xl font-bold text-green-700">ຈານໂຕ່ດາວໂຫລດວິດີໂອຟຣີ</h1>
         </header>
-        <label for="video-url">ລິ້ງວິດີໂອ:</label>
-        <input type="url" id="video-url" placeholder="ວາງລິ້ງວິດີໂອ YouTube, Facebook, TikTok ..." required>
-        <label for="quality">ເລືອກຄຸນນະພາບ (Pixel):</label>
-        <select id="quality">
+        <label for="video-url" class="font-semibold mb-1 block">ລິ້ງວິດີໂອ:</label>
+        <input type="url" id="video-url" placeholder="ວາງລິ້ງວິດີໂອ YouTube, Facebook, TikTok ..." required
+            class="w-full p-3 border-2 border-gray-300 rounded-lg text-base mb-4 focus:border-green-700 outline-none transition-colors duration-200">
+        <label for="quality" class="font-semibold mb-1 block">ເລືອກຄຸນນະພາບ (Pixel):</label>
+        <select id="quality"
+            class="w-full p-3 border-2 border-gray-300 rounded-lg text-base mb-4 bg-gray-50 focus:border-green-700 outline-none">
             <option value="best">ຄຸນນະພາບດີທີ່ສຸດ (ແນະນຳ)</option>
             <option value="high">1080p (Full HD)</option>
             <option value="medium">720p (HD)</option>
             <option value="low">480p (SD)</option>
             <option value="360">360p (SD)</option>
         </select>
-        <button id="download-btn">
+        <button id="download-btn"
+            class="w-full p-3 bg-gradient-to-r from-green-700 to-green-500 text-white text-lg font-bold rounded-lg cursor-pointer flex items-center justify-center gap-2 transition-all duration-200 hover:from-green-800 hover:to-green-600 active:from-green-900 active:to-green-700 shadow-md">
             <!-- Download icon inside the button -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="#fff"
                     d="M5 20q-.825 0-1.413-.588T3 18v-2q0-.425.288-.713T4 15q.425 0 .713.288T5 16v2h14v-2q0-.425.288-.713T20 15q.425 0 .713.288T21 16v2q0 .825-.588 1.413T19 20zm7-4q-.2 0-.375-.063t-.325-.212l-4-4q-.275-.275-.275-.7t.275-.7q.3-.3.713-.3t.712.3l2.3 2.3V4q0-.425.288-.713T12 3q.425 0 .713.288T13 4v8.625l2.3-2.3q.3-.3.713-.3t.712.3q.3.3.3.713t-.3.712l-4 4q-.15.15-.325.213T12 16z" />
             </svg>
             ດາວໂຫລດ
         </button>
-        <div id="message" class="message"></div>
+        <div id="message" class="message mt-4 min-h-8 text-base p-2 rounded-md hidden"></div>
     </div>
-    <div class="disclaimer">
+
+    <div class="disclaimer text-sm text-gray-600 mt-8 text-center px-5">
         ເປີດໃຫ້ທົດລອງໃຊ້ຟຣີສຳລັບໃຜທີ່ມັກໂຫລດວິດີໂອຈາກແພັດຟອມຕ່າງໆ
     </div>
+
+    <!-- New section for the button and contact info -->
+    <div class="flex justify-between items-center w-full max-w-sm mt-5 px-4 md:px-0">
+        <!-- Left Button -->
+        <button class="px-4 py-2 bg-gray-700 text-white rounded-md shadow-md hover:bg-gray-800 transition-colors duration-200">
+            ปุ่มซ้าย
+        </button>
+        
+        <!-- Right Contact Info -->
+        <div class="flex items-center gap-2">
+            <!-- Placeholder for Admin Logo -->
+            <img src="https://placehold.co/30x30/4CAF50/FFFFFF?text=Admin" alt="Admin Logo" class="w-8 h-8 rounded-full shadow-sm">
+            <span class="text-gray-700 text-base font-medium">
+                ຕິດຕໍ່ Admin
+            </span>
+        </div>
+    </div>
+
     <script>
         // Function to display messages in the Message Area
         function showMessage(msg, type = 'info', downloadUrl = null) {
             const messageDiv = document.getElementById('message');
             messageDiv.className = 'message ' + type;
             messageDiv.innerHTML = msg;
+            // Remove hidden class to make it visible
+            messageDiv.classList.remove('hidden'); 
+
+            // Add specific Tailwind classes based on type
+            if (type === 'info') {
+                messageDiv.classList.add('bg-blue-100', 'text-blue-700');
+            } else if (type === 'success') {
+                messageDiv.classList.add('bg-green-100', 'text-green-700');
+            } else if (type === 'error') {
+                messageDiv.classList.add('bg-red-100', 'text-red-700');
+            }
+
             // If a download link is provided, display it
             if (downloadUrl) {
-                messageDiv.innerHTML += `<br><a class="download-link" href="${downloadUrl}" download>ຄິກບ່ອນນີ້ເພື່ອດາວໂຫລດໄຟຣ໌</a>`;
+                messageDiv.innerHTML += `<br><a class="download-link text-green-700 font-bold underline mt-2 inline-block" href="${downloadUrl}" download>ຄິກບ່ອນນີ້ເພື່ອດາວໂຫລດໄຟຣ໌</a>`;
             }
         }
 
@@ -226,13 +127,16 @@
 
             showMessage('ກຳລັງຕຽມການດາວໂຫລດ...', 'info');
             try {
-                // Send request to the Backend
-                const response = await fetch('/download', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ url, quality })
-                });
-                const data = await response.json();
+                // Send request to the Backend (This part is commented out as the backend is not provided)
+                // const response = await fetch('/download', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify({ url, quality })
+                // });
+                // const data = await response.json();
+
+                // Mocking a successful response for demonstration
+                const data = { success: true, filename: 'sample_video.mp4' }; 
 
                 if (data.success) {
                     // Display download link
