@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 5000
 
 # กำหนดคำสั่งเริ่มต้นเมื่อ Container รัน (จาก Procfile)
-CMD ["gunicorn", "app:app", "--log-file", "-", "--timeout", "300"]
+CMD ["gunicorn", "app:app", "--log-file", "-", "--timeout", "600"]
